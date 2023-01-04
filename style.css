@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Gotham';
+  src: url('./fonts/GothamBook.ttf') format('embedded-opentype'), /*IE*/
+       url('./fonts/GothamBook.ttf') format('woff2'), /*Newwer modern browsers*/
+       url('./fonts/GothamBook.ttf') format('woff'), /*modern browsers*/
+       url('./fonts/GothamBook.ttf') format('truetype'), /*safari, android, ios*/
+       url('./fonts/GothamBook.ttf') format('svg'), /*old ios*/
+}
+
+#inputBlock1 {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+a{
+  text-decoration: none;
+}
+
+span, a {
+  font-size: 11pt;
+  color: #444;
+}
