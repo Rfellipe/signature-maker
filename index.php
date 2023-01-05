@@ -43,32 +43,12 @@
   </style>
 
   <body>
-
-    <!-- Image <input type="file" id="image" value="">
-    Background Color <input type="text" id="background" value="#734C99">
-    Text Color <input type="text" id="text" value="white">
-    Border Color <input type="text" id="border" value="black"> <br>
-    From <input type="text" id="from" value="From">
-    Message <input type="text" id="message" value="Message">
-    To <input type="text" id="to" value="To">
-    <hr> -->
-    <!-- <div class="card">
-      <div class="img">
-        <img src="" style="width: 100%; height: 100%;">
-      </div>
-      <div class="container">
-        <h2 class = "left" id = "h2from"></h2>
-        <p class = "center" id = "pmessage"></p>
-        <h2 class = "right" id = "h2to"></h2>
-      </div>
-    </div> -->
-
     <div class="card" style="width: 700px; height: 142px;">
       <table id="signature">
         <tbody id="signature-body" style="display: flex; position: absolute; left: 5; top: 5;">
           <tr valign="top">
             <td style="width:10px; padding-right:10px">
-              <img class="logo" src="images/FG_Assinatura_email_2022_cresci_vendas.png" alt="photo" ><!--logo-->
+              <img class="logo" src="img/banner.png" alt="photo" ><!--logo-->
             </td>
 
             <td id="signature-info" class="signature-info" style="color: black;text-align:initial;;line-height:normal;font-size:13pt;font-family:Gotham;padding-top: 17px;padding-left: 11px;">
@@ -119,47 +99,6 @@
     <button type="button" name="button"> <a href="#" id = "download">Download</a> </button>
 
     <script type="text/javascript">
-      var imagesrc = "img/banner.png";
-      // Upload image to the directory
-      $(document).ready(function(){
-        $('#image').change(function(){
-          var formData = new FormData();
-          var files = $('#image')[0].files;
-          formData.append('image', files[0]);
-          $.ajax({
-            url: 'upload.php',
-            type: 'post',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(response){
-              imagesrc = response;
-            }
-          });
-        });
-      });
-
-      // Real time preview card
-      setInterval(function(){
-        preview();
-      }, 0);
-
-      function preview(){
-        var background = $('#background').val();
-        var text = $('#text').val();
-        var border = $('#border').val();
-        var from = $('#from').val();
-        var message = $('#message').val();
-        var to = $('#to').val();
-        $("img").attr("src", imagesrc);
-        $('.card').css("background", background);
-        $('.card').css("color", text);
-        $('.card').css("border-color", border);
-        $('#h2from').text(from);
-        $('#pmessage').text(message);
-        $('#h2to').text(to);
-      }
-
       // Download card
       var element = $(".card");
       $("#download").on('click', function(){
