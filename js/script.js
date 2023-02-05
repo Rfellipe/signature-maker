@@ -1,51 +1,28 @@
-function enviar(){
-    var name = document.getElementById("inputName").value;
-    document.getElementById("name").innerHTML = name; 
-
-    var tittleC = document.getElementById("inputTitle").value;
-    document.getElementById("title").innerHTML = tittleC;
-
-    var ramalC = document.getElementById("inputTel").value;
-    document.getElementById("tel").innerHTML = ramalC;
-
-/*     var cel = document.getElementById("inputCel").value;
-    document.getElementById("Celular").innerHTML = cel; */
-
-    var creci = document.getElementById("inputCreci").value;
-    document.getElementById("creci").innerHTML = creci;
-
-    var addressC = document.getElementById("inputAddress").value;
-    document.getElementById("address").innerHTML = addressC;
+function getuser(str) { // Função para alterar valores na assinatura
+  var xhttp;    
+  if (str == "") {
+    document.getElementById("signature").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("signature").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "getuser.php?search="+str, true);
+  xhttp.send();
 }
 
-$(document).ready(function() {
-          
-    // Global variable
-    var element = $("#signature-div"); 
-  
-    // Global variable
-    var getCanvas; 
 
-    $("#btn-Preview-Image").on('click', function() {
+// Função para fazer download da assinatura 
+var element = $(".card");
+      $("#download").on('click', function(){
         html2canvas(element, {
-            onrendered: function(canvas) {
-                $("#previewImage").append(canvas);
-                getCanvas = canvas;
-            }
+          onrendered: function(canvas){
+            var imageData = canvas.toDataURL("image/png");
+            var newData = imageData.replace(/^data:image\/png/, "data:application/octet-stream");
+            $('#download').attr("download", "image.png").attr("href", newData);
+          }
         });
-    });
-
-    $("#btn-Convert-Html2Image").on('click', function() {
-        var imgageData = 
-            getCanvas.toDataURL("image/png");
-      
-        // Now browser starts downloading 
-        // it instead of just showing it
-        var newData = imgageData.replace(
-        /^data:image\/png/, "data:application/octet-stream");
-      
-        $("#btn-Convert-Html2Image").attr(
-        "download", "GeeksForGeeks.png").attr(
-        "href", newData);
-    });
-});
+      });
